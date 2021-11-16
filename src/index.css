@@ -8,6 +8,18 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
 }
+
+@font-face {
+  font-family: 'IranSans';
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/IRANSansWeb.ttf') format('truetype');
+}
+html * {
+  font-family:  IranSans, serif;
+  font-display: swap;
+}
+
