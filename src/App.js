@@ -1,42 +1,47 @@
 import { CacheProvider, ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
+import { createTheme, Switch } from "@mui/material";
 import rtlPlugin from "stylis-plugin-rtl";
 import createCache from "@emotion/cache";
 import Body from "./components/Body";
+import { useState } from "react";
+import { Box } from "@mui/system";
 
 function App() {
+  const [mode, setMode] = useState("light");
+
+  const handleChange = () => {
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
   const theme = createTheme({
     // direction: "rtl",
     palette: {
-      type: "dark",
-      primary: {
-        main: "#61DBA1",
-        dark: "#6ae6ad",
-        light: "#92ffcc",
-        contrastText: "#ffffff",
-      },
-      secondary: {
-        main: "#FB679F",
-        dark: "#fb4b8e",
-        light: "#FB679F",
-        contrastText: "#ffffff",
-      },
-      background: {
-        default: "#FBF9F9",
-      },
-      error: {
-        main: "#FE1E6A",
-        dark: "#ff1744",
-      },
-      divider: "#635F57",
-      warning: {
-        main: "#ffb300",
-        dark: "#ffa000",
-      },
-      success: {
-        main: "#00e676",
-        dark: "#c80029",
-      },
+      mode: mode,
+      ...(mode === "light"
+        ? {
+            // palette values for light mode
+            primary: {
+              main: "#ffa726",
+              contrastText: "#ffffff",
+            },
+            secondary: {
+              main: "#FB679F",
+              contrastText: "#ffffff",
+            },
+            error: {
+              main: "#f44336",
+            },
+            divider: "#635F57",
+          }
+        : {
+            // palette values for dark mode
+            primary: {
+              main: "#ffa726",
+            },
+            background: {
+              default: "#303030",
+              paper: "#585b62",
+            },
+          }),
     },
     typography: {
       fontFamily: ["IranSans"].join(","),
@@ -47,13 +52,13 @@ function App() {
           {
             props: { variant: "contained" },
             style: {
-              borderRadius: "50px",
+              borderRadius: "10px",
             },
           },
           {
             props: { variant: "outlined" },
             style: {
-              borderRadius: "50px",
+              borderRadius: "10px",
               contrastText: " #fff",
             },
           },
@@ -61,7 +66,7 @@ function App() {
             props: { variant: "text" },
             style: {
               fontSize: "smaller",
-              borderRadius: "50px",
+              borderRadius: "10px",
             },
           },
         ],
@@ -75,7 +80,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CacheProvider value={cacheRtl}>
-        <Body />
+        <Box
+          sx={{
+            minHeight: "100vh",
+            background: mode === "dark" ? "#2c2c35" : "white",
+            color: mode === "dark" ? "white" : "#303030",
+          }}
+        >
+          {"تاریک"}
+          <Switch onChange={handleChange} defaultChecked />
+          {"روشن"}
+          <Body mode={mode} />
+        </Box>
       </CacheProvider>
     </ThemeProvider>
   );
