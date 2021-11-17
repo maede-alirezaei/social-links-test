@@ -40,7 +40,7 @@ function Body(props) {
     dispatch(uiActions.openHandler());
   };
   return (
-    <Card sx={{ m: 16, p: 2, background: props.mode === "dark" && "#2c2f37" }}>
+    <Card sx={{ m: 16, p: 2, background: props.mode === "dark" && "#2f3a46" }}>
       <h6>{"مسیر های ارتباطی"}</h6>
       <Button
         startIcon={editForm ? <CreateIcon /> : <AddIcon />}

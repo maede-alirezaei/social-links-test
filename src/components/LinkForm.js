@@ -88,7 +88,7 @@ function LinkForm() {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+ 
           alignItems: "center",
         }}
         component="form"
@@ -99,7 +99,7 @@ function LinkForm() {
           label="نوع*"
           value={editForm ? editRecord.type : enteredType}
           onChange={typeChangeHandler}
-          sx={{ width: "20%", m: 4 }}
+          sx={{ width: "100%", mb:2 ,mr:2 }}
           disabled={editForm}
         >
           {types.map((option) => (
@@ -113,14 +113,14 @@ function LinkForm() {
           onChange={socialLinkChangeHandler}
           onBlur={socialLinkBlurHandler}
           label="لینک"
-          sx={{ width: "20%", m: 4 }}
+          sx={{ width: "100%", mb:2,mr:2 }}
         />
         <TextField
           value={enteredSocialId}
           onChange={socialIdChangeHandler}
           onBlur={socialIdBlurHandler}
           label="آی دی (ID)"
-          sx={{ width: "20%", m: 4 }}
+          sx={{ width: "100%", mb: 2 }}
         />
       </Box>
       <Box sx={{ display: "flex", justifyContent: "right" }}>

@@ -38,8 +38,7 @@ function App() {
               main: "#ffa726",
             },
             background: {
-              default: "#303030",
-              paper: "#585b62",
+              paper: "#495864",
             },
           }),
     },
